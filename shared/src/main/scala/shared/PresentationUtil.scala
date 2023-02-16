@@ -4,21 +4,18 @@ import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
 import japgolly.scalajs.react.vdom.TagOf
 import org.scalajs.dom
-import dom.raw.HTMLElement
+import dom.HTMLElement
 
 object PresentationUtil {  
 
-  val font = HtmlTag("font")
-
-  val dataBackground      = VdomAttr("data-background")
-  val dataBackgroundColor = VdomAttr("data-background-color")
-  val dataBackgroundSize  = VdomAttr("data-background-size")
-  val dataTrim            = VdomAttr("data-trim") := ""
-  val dataNoEscape        = VdomAttr("data-noescape") := ""
+  private val dataBackgroundColor = VdomAttr("data-background-color")
+  private val dataBackgroundSize  = VdomAttr("data-background-size")
+  private val dataTrim            = VdomAttr("data-trim") := ""
+  private val dataNoEscape        = VdomAttr("data-noescape") := ""
 
   def chapter(slides: TagOf[HTMLElement]*): TagOf[HTMLElement] = <.section(slides: _*)
 
-  def header(text: String, cls: String): TagOf[HTMLElement] = 
+  private def header(text: String, cls: String): TagOf[HTMLElement] =
     <.div(
       ^.cls := cls,
       <.p(text)
@@ -42,13 +39,13 @@ object PresentationUtil {
   }
 
   private val ChapterSlideProps = Seq(
-    (dataBackgroundColor := "#363633"),
-    (dataBackgroundSize  := "30%")
+    dataBackgroundColor := "#363633",
+    dataBackgroundSize  := "30%"
   )
 
   def chapterSlide(content: TagOf[HTMLElement]*): TagOf[HTMLElement] = cleanSlide(
     <.section(
-      (ChapterSlideProps ++: content): _*
+      ChapterSlideProps ++: content: _*
     )
   )
 
@@ -60,7 +57,7 @@ object PresentationUtil {
 
   def headerSlide(headerStr: String, content: TagOf[HTMLElement]*): TagOf[HTMLElement] = cleanSlide(
     <.section(
-      (header(headerStr, "slide-header") +: content): _*
+      header(headerStr, "slide-header") +: content: _*
     )
   )
 
@@ -72,10 +69,7 @@ object PresentationUtil {
       codeStr
     )
 
-  def bash(codeStr: String): TagOf[HTMLElement] = <.pre(rawCode("Bash", codeStr))
   def scalaC(codeStr: String): TagOf[HTMLElement] = <.pre(rawCode("Scala", codeStr))
-  def haskell(codeStr: String): TagOf[HTMLElement] = <.pre(rawCode("Haskell", codeStr))
-  def lisp(codeStr: String): TagOf[HTMLElement] = <.pre(rawCode("Lisp", codeStr))
 
   private def rawCodeFragment(language: String, codeStr: String): TagOf[HTMLElement] =
     <.pre(
@@ -84,8 +78,6 @@ object PresentationUtil {
     )
 
   def scalaFragment(codeStr: String): TagOf[HTMLElement] = rawCodeFragment("Scala", codeStr)
-  def haskellFragment(codeStr: String): TagOf[HTMLElement] = rawCodeFragment("Haskell", codeStr)
-  def lispFragment(codeStr: String): TagOf[HTMLElement] = rawCodeFragment("Lisp", codeStr)
 
   object Enumeration {
    
@@ -99,7 +91,7 @@ object PresentationUtil {
 
     def apply(head: TagOf[HTMLElement], tail: TagOf[HTMLElement]*): TagOf[HTMLElement] = {
       <.ul(
-        (head +: tail): _*
+        head +: tail: _*
       )
     }
   }
