@@ -1,1 +1,3 @@
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "0.6.24")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.13.0")
+//addSbtPlugin("org.scala-js" % "sbt-jsdependencies" % "1.0.2")
+addSbtPlugin("ch.epfl.scala" % "sbt-scalajs-bundler" % "0.21.1")
