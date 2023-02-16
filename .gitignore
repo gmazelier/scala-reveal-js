@@ -31,7 +31,5 @@ hs_err_pid*
 *.*~
 
 # allow
-!/my-talk/target/scala-2.12/mytalk-fastopt.js
-!/my-talk/target/scala-2.12/mytalk-jsdeps.js
-!/my-talk/target/scala-3.2/mytalk-fastopt.js
-!/my-talk/target/scala-3.2/mytalk-jsdeps.js
+my-talk/js/*.js
+my-talk/js/*.js.map
