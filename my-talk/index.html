@@ -5,43 +5,38 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <link rel="stylesheet" href="./../reveal/css/reveal.css">
-    <link rel="stylesheet" href="./../reveal/css/theme/white.css" id="theme">
-    <link rel="stylesheet" href="./css/presentation.css">
+    <link rel="stylesheet" href="./../reveal.js-4.4.0/dist/reset.css">
+    <link rel="stylesheet" href="./../reveal.js-4.4.0/dist/reveal.css">
+    <link rel="stylesheet" href="./../reveal.js-4.4.0/dist/theme/black.css" id="theme">
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="./../reveal/lib/css/vscode.css">
+    <link rel="stylesheet" href="./../reveal.js-4.4.0/plugin/highlight/monokai.css">
   </head>
   <body>
     <!-- Your compiled JS presentation -->
-    <script type="text/javascript" src="./target/scala-2.12/mytalk-jsdeps.js"></script>
-    <script type="text/javascript" src="./target/scala-2.12/mytalk-fastopt.js"></script>
+    <script type="text/javascript" src="./target/scala-3.2.2/mytalk-jsdeps.js"></script>
+    <script type="text/javascript" src="./target/scala-3.2.2/mytalk-fastopt.js"></script>
 
-    <script src="./../reveal/lib/js/head.min.js"></script>
-    <script src="./../reveal/js/reveal.js"></script>
-
+    <script src="./../reveal.js-4.4.0/dist/reveal.js"></script>
+    <script src="./../reveal.js-4.4.0/plugin/zoom/zoom.js"></script>
+    <script src="./../reveal.js-4.4.0/plugin/notes/notes.js"></script>
+    <script src="./../reveal.js-4.4.0/plugin/search/search.js"></script>
+    <script src="./../reveal.js-4.4.0/plugin/markdown/markdown.js"></script>
+    <script src="./../reveal.js-4.4.0/plugin/highlight/highlight.js"></script>
     <script>
-       Reveal.initialize({
-           width: "80%",
-           height: "100%",
-           controls: false,
-           progress: false,
-           history: false,
-           center: true,
 
-           transition: 'none',
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
 
-           math: {
-               config: 'TeX-AMS_HTML-full'
-           },
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight ]
+			});
 
-           dependencies: [
-               { src: './../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-               { src: './../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-               { src: './../reveal/plugin/zoom-js/zoom.js', async: true },
-               { src: './../reveal/plugin/math/mathjax.js', async: true }
-           ]
-       });
-    </script>
+		</script>
   </body>
 </html>

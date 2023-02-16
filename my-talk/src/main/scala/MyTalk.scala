@@ -4,14 +4,11 @@ import japgolly.scalajs.react.ScalaComponent
 import japgolly.scalajs.react.vdom.html_<^._
 import org.scalajs.dom
 
-import scala.scalajs.js.JSApp
-import scala.scalajs.js.annotation.JSExport
-
-object MyTalk extends JSApp {
+object MyTalk {
 
   import Enumeration._
 
-  val chapter1 = chapter(
+  private val chapter1 = chapter(
     chapterSlide(
       <.h2("Build your presentations with ScalaJS + reveal.js"),
       <.br,
@@ -58,7 +55,7 @@ object MyTalk extends JSApp {
     )
   )
 
-  val chapter2 = chapter(
+  private val chapter2 = chapter(
     chapterSlide(
       <.h2("Where can I find more information?")
     ),
@@ -80,7 +77,7 @@ object MyTalk extends JSApp {
     )
   )
 
-  val Talk = ScalaComponent
+  private val Talk = ScalaComponent
     .builder[Unit]("Presentation")
     .renderStatic(
       <.div(
@@ -94,8 +91,7 @@ object MyTalk extends JSApp {
     )
     .build
 
-  @JSExport
-  override def main(): Unit = {
+  def main(args: Array[String]): Unit = {
     Talk().renderIntoDOM(dom.document.body)
   }
 }
